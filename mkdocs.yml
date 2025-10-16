@@ -1,0 +1,16 @@
+site_name: Rely Docs
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings
+
+markdown_extensions:
+  - pymdownx.highlight:
+      default_lang: python
+
+nav:
+  - index.md
+  - reference.md
