@@ -1,6 +1,7 @@
 <a id="readme-top"></a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+# Rely
+Rely is a tool for vetting GitHub dependencies.
 
 
 ### Installation
