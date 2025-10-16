@@ -1,24 +1,27 @@
-<a id="readme-top"></a>
-
 # Rely
 Rely is a tool for vetting GitHub dependencies.
 
 
 ### Installation
 
-1. Configure a GitHub personal access token: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
 2. Clone the repo
    ```sh
    git clone https://github.com/1cph93/rely.git
    ```
-3. Ensure `uv` is installed
-4. Install dependencies with `uv sync`
-5. Run the `./scripts/run_streamlit_app.sh` script from the root directory
-6. Visit `localhost:8000` in the browser
+3. Ensure `uv` is installed ([guide](https://docs.astral.sh/uv/getting-started/installation/))
+4. Install dependencies:
+  ```sh
+  uv sync
+  ```
+5. Copy the `.env.example` file to `.env` and set your GitHub personal access token
+6. Run the Streamlit app from the root directory:
+   ```sh
+   ./scripts/run_streamlit_app.sh
+   ```
+7. Visit [https://localhost:8000](https://localhost:8000) in the browser
 
 
-
-<!-- ROADMAP -->
 ## Roadmap
 
 - [ ] Add tests
@@ -27,11 +30,7 @@ Rely is a tool for vetting GitHub dependencies.
 
 See the [open issues](https://github.com/1cph93/rely/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -46,21 +45,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Christian Hogan - 1cph93@gmail.com
-
-Project Link: [https://github.com/1cph93/rely](https://github.com/1cph93/rely)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
