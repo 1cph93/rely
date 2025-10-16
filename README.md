@@ -21,6 +21,8 @@ Rely is a tool for vetting GitHub dependencies.
 <!-- ROADMAP -->
 ## Roadmap
 
+- [ ] Add tests
+- [ ] Add CI/CD
 - [ ] Add Security-related metrics
 
 See the [open issues](https://github.com/1cph93/rely/issues) for a full list of proposed features (and known issues).
