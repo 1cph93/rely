@@ -7,10 +7,9 @@ class HttpClient:
     # TODO: Fix Any return type
     async def get(
         self,
-        url: str,
         *,
+        url: str,
         headers: Mapping[str, str] | None = None,
-        data: Mapping[str, str] | None = None,
     ) -> Any:
         """Perform an HTTP GET request."""
         # TODO: Add error handling

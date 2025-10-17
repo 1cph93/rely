@@ -3,10 +3,11 @@ from types import MappingProxyType
 
 from rely.clients.http_client import HttpClient
 from rely.clients.models.full_repository import FullRepository
+from rely.clients.models.content_tree import ContentTree
 
 
 class GithubAPIClient:
-    """Super light GitHub API client for interacting with repos."""
+    """Minimal GitHub API client for interacting with repos."""
 
     API_BASE_URL: Final[str] = "https://api.github.com"
 
@@ -25,9 +26,20 @@ class GithubAPIClient:
 
         url = f"{self.API_BASE_URL}/repos/{repo_owner}/{repo_name}"
         response = await self._http_client.get(
-            url,
+            url=url,
             headers=self.headers,
         )
 
         # TODO: Add error handling
         return FullRepository.model_validate(response)
+
+    async def get_repo_contents(self, contents_url: str) -> ContentTree:
+        """Get the contents of a repository.  Reference: https://docs.github.com/en/rest/repos/contents?apiVersion=2022-11-28"""
+
+        response = await self._http_client.get(
+            url=contents_url,
+            headers=self.headers,
+        )
+
+        # TODO: Add error handling
+        return ContentTree.model_validate(response)
