@@ -24,3 +24,8 @@ dev = [
     "rich>=14.2.0",
     "ruff>=0.14.1",
 ]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
