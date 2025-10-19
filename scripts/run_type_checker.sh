@@ -1,3 +1,3 @@
 #!/bin/sh
 
-uv run mypy --strict .
+uv run pyright .
