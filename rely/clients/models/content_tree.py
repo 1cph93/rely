@@ -25,7 +25,7 @@ class Entry(BaseModel):
     git_url: Optional[AnyUrl]
     html_url: Optional[AnyUrl]
     download_url: Optional[AnyUrl]
-    field_links: FieldLinks = Field(..., alias='_links')
+    field_links: FieldLinks = Field(..., alias="_links")
 
 
 class ContentTree(BaseModel):
@@ -41,4 +41,4 @@ class ContentTree(BaseModel):
     download_url: Optional[AnyUrl]
     entries: Optional[List[Entry]] = None
     encoding: Optional[str] = None
-    field_links: FieldLinks = Field(..., alias='_links')
+    field_links: FieldLinks = Field(..., alias="_links")
