@@ -14,7 +14,7 @@ _GITHUB_HOST: Final[str] = "github.com"
 def _is_valid_path(path: str | None) -> tuple[str, str]:
     """Validates that a path follows the correct format (OWNER/REPO).  Returns repo owner and repo name if successful."""
 
-    if path is None:
+    if path is None or path == "/":
         raise ValueError("path can not be empty")
 
     split_path = path.strip("/").split("/")
