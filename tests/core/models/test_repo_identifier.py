@@ -4,7 +4,7 @@ from pydantic import HttpUrl
 from rely.core.models.repo_identifier import RepoIdentifier
 
 
-def test_create_repo_identifier_with_valid_host():
+def test_create_repo_identifier_with_valid_host() -> None:
     """Ensure that a RepoIdentifier can be created with a valid host"""
 
     repo_identifier = RepoIdentifier(
@@ -14,7 +14,7 @@ def test_create_repo_identifier_with_valid_host():
     assert repo_identifier is not None
 
 
-def test_create_repo_identifier_with_invalid_host():
+def test_create_repo_identifier_with_invalid_host() -> None:
     """Ensure that a RepoIdentifier can't be created with an invalid host"""
 
     with pytest.raises(ValueError) as exception_info:
@@ -25,7 +25,7 @@ def test_create_repo_identifier_with_invalid_host():
     assert "must include a GitHub domain" in str(exception_info.value)
 
 
-def test_create_repo_identifier_with_valid_path():
+def test_create_repo_identifier_with_valid_path() -> None:
     """Ensure that a RepoIdentifier can be created with a valid path"""
 
     repo_identifier = RepoIdentifier(
@@ -35,7 +35,7 @@ def test_create_repo_identifier_with_valid_path():
     assert repo_identifier is not None
 
 
-def test_create_repo_identifier_with_invalid_path():
+def test_create_repo_identifier_with_invalid_path() -> None:
     """Ensure that a RepoIdentifier can't be created with an invalid path"""
 
     with pytest.raises(ValueError) as exception_info:
@@ -44,7 +44,7 @@ def test_create_repo_identifier_with_invalid_path():
     assert "path must follow the format OWNER/REPO" in str(exception_info.value)
 
 
-def test_create_repo_identifier_with_empty_path():
+def test_create_repo_identifier_with_empty_path() -> None:
     """Ensure that a RepoIdentifier can't be created with an empty path"""
 
     with pytest.raises(ValueError) as exception_info:
@@ -53,7 +53,7 @@ def test_create_repo_identifier_with_empty_path():
     assert "path can not be empty" in str(exception_info.value)
 
 
-def test_get_repo_identifier_repo_owner():
+def test_get_repo_identifier_repo_owner() -> None:
     """Ensure that a RepoIdentifier contains a repo_owner"""
 
     repo_identifier = RepoIdentifier(
@@ -63,7 +63,7 @@ def test_get_repo_identifier_repo_owner():
     assert repo_identifier.repo_owner == "test_repo_owner"
 
 
-def test_get_repo_identifier_repo_name():
+def test_get_repo_identifier_repo_name() -> None:
     """Ensure that a RepoIdentifier contains a repo_name"""
 
     repo_identifier = RepoIdentifier(
