@@ -1,7 +1,7 @@
 from typing import Final
 from types import MappingProxyType
 
-from rely.clients.http_client import HttpClient
+from rely.clients.http_client import HTTPClient
 from rely.clients.models.full_repository import FullRepository
 from rely.clients.models.content_tree import ContentTree
 from rely.core.models.repo_identifier import RepoIdentifier
@@ -12,7 +12,7 @@ class GitHubAPIClient:
 
     API_BASE_URL: Final[str] = "https://api.github.com"
 
-    def __init__(self, http_client: HttpClient, personal_access_token: str) -> None:
+    def __init__(self, http_client: HTTPClient, personal_access_token: str) -> None:
         self._http_client = http_client
         self.headers: MappingProxyType[str, str] = MappingProxyType(
             {

@@ -3,7 +3,7 @@ from decimal import Decimal
 from pydantic import BaseModel
 
 from rely.config.settings import Settings
-from rely.clients.http_client import HttpClient
+from rely.clients.http_client import HTTPClient
 from rely.clients.github_api_client import GitHubAPIClient
 from rely.metrics import (
     MetricScore,
@@ -30,7 +30,7 @@ class RepoScore(BaseModel):
 
 async def score_repo(owner_name: str, repo_name: str) -> RepoScore:
     settings = Settings()
-    http_client = HttpClient()
+    http_client = HTTPClient()
     github_api_client = GitHubAPIClient(
         http_client, settings.github_personal_access_token
     )

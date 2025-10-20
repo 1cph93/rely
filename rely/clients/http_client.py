@@ -3,7 +3,7 @@ from typing import Mapping, Any
 import aiohttp
 
 
-class HttpClient:
+class HTTPClient:
     # TODO: Fix Any return type
     async def get(
         self,
