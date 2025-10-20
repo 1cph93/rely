@@ -4,8 +4,8 @@ from pydantic import (
     AfterValidator,
     HttpUrl,
     computed_field,
+    BaseModel,
 )
-from pydantic.dataclasses import dataclass as pydantic_dataclass
 
 
 _GITHUB_HOST: Final[str] = "github.com"
@@ -39,8 +39,7 @@ def _is_github_repo_url(url: HttpUrl) -> HttpUrl:
 _GitHubRepoUrl = Annotated[HttpUrl, AfterValidator(_is_github_repo_url)]
 
 
-@pydantic_dataclass
-class RepoIdentifier:
+class RepoIdentifier(BaseModel):
     """Model for storing fields that uniquely identify a repository."""
 
     url: _GitHubRepoUrl
