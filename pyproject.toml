@@ -33,4 +33,4 @@ testpaths = [
 
 [tool.pyright]
 typeCheckingMode = "strict"
-exclude = ["tests"]
+include = ["rely/core/models/*"]
