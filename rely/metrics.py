@@ -4,6 +4,7 @@ import enum
 from typing import Protocol
 
 from rely.clients.models.full_repository import FullRepository
+from rely.clients.models.content_tree import ContentTree
 
 
 class MetricScore(enum.Enum):
@@ -25,7 +26,9 @@ class Metric(Protocol):
         ...
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> MetricValue:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> MetricValue:
         """Compute the metric's raw value."""
         ...
 
@@ -43,7 +46,9 @@ class LastCommitMetric:
         return "last_commit_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> float:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> float:
         """Get the number of seconds since the last commit."""
 
         pushed_at = full_repository.pushed_at
@@ -79,7 +84,9 @@ class HasDescriptionMetric:
         return "has_description_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> bool:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
         """Return True if the description is present, otherwise return False."""
 
         description = full_repository.description
@@ -96,6 +103,33 @@ class HasDescriptionMetric:
         )
 
 
+class HasReadmeMetric:
+    """Does the repo have a README?"""
+
+    @staticmethod
+    def get_normalized_name() -> str:
+        return "has_readme_metric"
+
+    @staticmethod
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
+        """Return True if a README is present, otherwise return False."""
+
+        breakpoint()
+
+        return False
+
+    @staticmethod
+    def compute_score(full_repository: FullRepository) -> MetricScore:
+        """Return good MetricScore if a README is present, otherwise return poor MetricScore."""
+        return (
+            MetricScore.GOOD
+            if HasReadmeMetric._compute_value(full_repository)
+            else MetricScore.POOR
+        )
+
+
 class IsArchivedMetric:
     """Is the repo archived?"""
 
@@ -104,7 +138,9 @@ class IsArchivedMetric:
         return "is_archived_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> bool:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
         """Return True if the repo is archived, otherwise return False."""
 
         return full_repository.archived
@@ -127,7 +163,9 @@ class IsDisabledMetric:
         return "is_disabled_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> bool:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
         """Return True if the repo is disabled, otherwise return False."""
 
         return full_repository.disabled
@@ -150,7 +188,9 @@ class HasLicenseMetric:
         return "has_license_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> bool:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
         """Return True if the repo has a license, otherwise return False."""
 
         return full_repository.license is not None
@@ -173,7 +213,9 @@ class HasCodeOfConductMetric:
         return "has_code_of_conduct_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> bool:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> bool:
         """Return True if the repo has a code of conduct, otherwise return False."""
 
         return full_repository.code_of_conduct is not None
@@ -196,7 +238,9 @@ class StarCountMetric:
         return "star_count_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> int:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> int:
         """Return the number of stars a repo has."""
 
         return full_repository.stargazers_count
@@ -227,7 +271,9 @@ class ForkCountMetric:
         return "fork_count_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> int:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> int:
         """Return the number of forks a repo has."""
 
         return full_repository.forks_count
@@ -258,7 +304,9 @@ class WatcherCountMetric:
         return "watcher_count_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> int:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> int:
         """Return the number of watchers a repo has."""
 
         return full_repository.watchers_count
@@ -289,7 +337,9 @@ class OpenIssueCountMetric:
         return "open_issue_count_metric"
 
     @staticmethod
-    def _compute_value(full_repository: FullRepository) -> int:
+    def _compute_value(
+        full_repository: FullRepository, content_tree: ContentTree
+    ) -> int:
         """Return the number of open issues a repo has."""
 
         return full_repository.open_issues_count
