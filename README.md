@@ -9,7 +9,7 @@ Rely is a tool for vetting GitHub dependencies.
 >
 > Rely is in active development and certain features may be incomplete.
 
-### Installation
+## Installation
 
 1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
 2. Clone the repo
