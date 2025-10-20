@@ -1,6 +1,13 @@
 # Rely
+
 Rely is a tool for vetting GitHub dependencies.
 
+[![Test](https://github.com/1cph93/rely/actions/workflows/test.yml/badge.svg?branch=main&event=push)](https://github.com/1cph93/rely/actions/workflows/test.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
+
+> [!NOTE]
+>
+> Rely is in active development and certain features may be incomplete.
 
 ### Installation
 
