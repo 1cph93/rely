@@ -4,9 +4,10 @@ from types import MappingProxyType
 from rely.clients.http_client import HttpClient
 from rely.clients.models.full_repository import FullRepository
 from rely.clients.models.content_tree import ContentTree
+from rely.core.models.repo_identifier import RepoIdentifier
 
 
-class GithubAPIClient:
+class GitHubAPIClient:
     """Minimal GitHub API client for interacting with repos."""
 
     API_BASE_URL: Final[str] = "https://api.github.com"
@@ -21,10 +22,10 @@ class GithubAPIClient:
             }
         )
 
-    async def get_repo(self, repo_owner: str, repo_name: str) -> FullRepository:
+    async def get_repo(self, repo_identifier: RepoIdentifier) -> FullRepository:
         """Get a repository.  Reference: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository"""
 
-        url = f"{self.API_BASE_URL}/repos/{repo_owner}/{repo_name}"
+        url = f"{self.API_BASE_URL}/repos/{repo_identifier.repo_owner}/{repo_identifier.repo_name}"
         response = await self._http_client.get(
             url=url,
             headers=self.headers,
