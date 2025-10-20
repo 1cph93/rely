@@ -18,9 +18,9 @@ Rely is a tool for vetting GitHub dependencies.
    ```
 3. Ensure `uv` is installed ([guide](https://docs.astral.sh/uv/getting-started/installation/))
 4. Install dependencies:
-  ```sh
-  uv sync
-  ```
+   ```sh
+   uv sync
+   ```
 5. Copy the `.env.example` file to `.env` and set your GitHub personal access token
 6. Run the Streamlit app from the root directory:
    ```sh
