@@ -41,7 +41,7 @@ _GitHubRepoUrl = Annotated[HttpUrl, AfterValidator(_is_github_repo_url)]
 
 @pydantic_dataclass
 class RepoIdentifier:
-    """Model for uniquely identifying a repository."""
+    """Model for storing fields that uniquely identify a repository."""
 
     url: _GitHubRepoUrl
 
