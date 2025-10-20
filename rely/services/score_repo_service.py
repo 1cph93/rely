@@ -4,11 +4,12 @@ from pydantic import BaseModel
 
 from rely.config.settings import Settings
 from rely.clients.http_client import HttpClient
-from rely.clients.github_api_client import GithubAPIClient
+from rely.clients.github_api_client import GitHubAPIClient
 from rely.metrics import (
     MetricScore,
     LastCommitMetric,
     HasDescriptionMetric,
+    HasReadmeMetric,
     IsArchivedMetric,
     IsDisabledMetric,
     HasLicenseMetric,
@@ -30,15 +31,19 @@ class RepoScore(BaseModel):
 async def score_repo(owner_name: str, repo_name: str) -> RepoScore:
     settings = Settings()
     http_client = HttpClient()
-    github_api_client = GithubAPIClient(
+    github_api_client = GitHubAPIClient(
         http_client, settings.github_personal_access_token
     )
     full_repository = await github_api_client.get_repo(owner_name, repo_name)
+    content_tree = await github_api_client.get_repo_contents(
+        full_repository.contents_url
+    )
 
     metrics_to_compute = frozenset(
         {
             LastCommitMetric(),
             HasDescriptionMetric(),
+            HasReadmeMetric(),
             IsArchivedMetric(),
             IsDisabledMetric(),
             HasLicenseMetric(),
@@ -51,7 +56,9 @@ async def score_repo(owner_name: str, repo_name: str) -> RepoScore:
     )
 
     # TODO: Resolve type: ignore
-    computed_metrics = compute_metrics(metrics_to_compute, full_repository)  # type: ignore
+    computed_metrics = compute_metrics(
+        metrics_to_compute, full_repository, content_tree
+    )  # type: ignore
     overall_score = compute_overall_score(computed_metrics)
 
     return RepoScore.model_validate(
