@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from pydantic import AnyUrl, BaseModel, Field
+from pydantic import AnyUrl, BaseModel, Field, ConfigDict
 
 
 class FieldLinks(BaseModel):
@@ -16,6 +16,8 @@ class FieldLinks(BaseModel):
 
 
 class Entry(BaseModel):
+    model_config = ConfigDict(serialize_by_alias=True)
+
     type: str
     size: int
     name: str
@@ -29,6 +31,8 @@ class Entry(BaseModel):
 
 
 class ContentTree(BaseModel):
+    model_config = ConfigDict(serialize_by_alias=True)
+
     type: str
     size: int
     name: str
