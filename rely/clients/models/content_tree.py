@@ -42,7 +42,3 @@ class ContentTree(BaseModel):
     entries: Optional[List[Entry]] = None
     encoding: Optional[str] = None
     field_links: FieldLinks = Field(..., alias="_links")
-
-
-class ContentTreeList(BaseModel):
-    content_tree_list: list[ContentTree]
