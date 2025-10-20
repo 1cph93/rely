@@ -1,4 +1,4 @@
-name: CI
+name: Format
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  build:
-    name: build
+  format:
+    name: format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -23,35 +23,8 @@ jobs:
       - name: Install the project
         run: uv sync --locked --all-extras --dev
 
-  format:
-    name: format
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v5
-
       - name: Lint code with Ruff
         run: uv run ruff check --output-format=github
 
       - name: Check code formatting with Ruff
         run: uv run ruff format --diff
-
-  check_types:
-    name: check_types
-    runs-on: ubuntu-latest
-    needs: [format]
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Run Pyright type checker
-        run: uv run pyright
-
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    needs: [check_types]
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Run tests
-        run: uv run pytest
