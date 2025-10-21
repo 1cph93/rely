@@ -1,12 +1,8 @@
 import functools
 from decimal import Decimal
 
-from rely.core.metrics.metric import (
-    BaseMetric,
-    MetricScore,
-    MetricValue,
-    MetricName,
-)
+from rely.core.metrics.base_metric import BaseMetric
+from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 
 
 class StarCountMetric(BaseMetric):
