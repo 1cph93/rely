@@ -1,0 +1,44 @@
+import datetime
+import functools
+from decimal import Decimal
+
+from rely.core.metrics.metric import (
+    BaseMetric,
+    MetricScore,
+    MetricValue,
+    MetricName,
+)
+
+
+class LastCommitMetric(BaseMetric):
+    """How recent is the latest commit?"""
+
+    metric_name = MetricName.LAST_COMMIT_METRIC
+    metric_weight = Decimal("0.99")
+
+    @functools.cache
+    def compute_metric_value(self) -> MetricValue:
+        """Compute number of days since last commit."""
+
+        pushed_at = self.repo_context.full_repository.pushed_at
+        delta = datetime.datetime.now(datetime.timezone.utc) - pushed_at
+
+        return delta.days
+
+    @functools.cache
+    def compute_metric_score(self) -> MetricScore:
+        """Compute score based on time since last commit (shorter time equals better score)."""
+
+        computed_metric_value = self.compute_metric_value()
+
+        # Less than 30 days
+        if computed_metric_value < 30:
+            metric_score = MetricScore.GOOD
+        # Between 30 days and 180 days
+        elif 30 <= computed_metric_value <= 180:
+            metric_score = MetricScore.AVERAGE
+        # Greater than 180 days
+        else:
+            metric_score = MetricScore.POOR
+
+        return metric_score
