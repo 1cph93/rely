@@ -28,6 +28,7 @@ class MetricName(enum.Enum):
     STAR_COUNT_METRIC = ("star_count_metric", "Number of stars")
     FORK_COUNT_METRIC = ("fork_count_metric", "Number of forks")
     WATCHER_COUNT_METRIC = ("watcher_count_metric", "Number of watchers")
+    OPEN_ISSUE_COUNT_METRIC = ("open_issue_count_metric", "Number of open issues")
 
     def __init__(self, normalized_name: str, prettified_name: str) -> None:
         self.normalized_name = normalized_name
