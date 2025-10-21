@@ -27,6 +27,7 @@ class MetricName(enum.Enum):
     """Metric names."""
 
     LAST_COMMIT_METRIC = ("last_commit_metric", "Last commit (in days)")
+    STAR_COUNT_METRIC = ("star_count_metric", "Number of stars")
 
     def __init__(self, normalized_name: str, prettified_name: str) -> None:
         self.normalized_name = normalized_name
