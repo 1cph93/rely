@@ -1,37 +1,19 @@
-import enum
 import functools
 from abc import ABC, abstractmethod
 from decimal import Decimal
-from typing import Annotated, Type, Any
+from typing import Type
 
-import annotated_types
-
+from rely.core.metrics.types import (
+    MetricName,
+    MetricScore,
+    MetricValue,
+    MetricWeight,
+    SerializedMetric,
+)
 from rely.core.models.repo_context import RepoContext
 
 
-class MetricScore(enum.IntEnum):
-    POOR = 1
-    AVERAGE = 2
-    GOOD = 3
-
-
-type MetricValue = int | float | bool
-# Decimal value between 0 and 1 (exclusive)
-type MetricWeight = Annotated[
-    Decimal, annotated_types.Gt((Decimal("0.0"))), annotated_types.Lt(Decimal("1.0"))
-]
 type MetricRegistry = dict[str, Type["BaseMetric"]]
-
-
-class MetricName(enum.Enum):
-    """Metric names."""
-
-    LAST_COMMIT_METRIC = ("last_commit_metric", "Last commit (in days)")
-    STAR_COUNT_METRIC = ("star_count_metric", "Number of stars")
-
-    def __init__(self, normalized_name: str, prettified_name: str) -> None:
-        self.normalized_name = normalized_name
-        self.prettified_name = prettified_name
 
 
 class BaseMetric(ABC):
@@ -94,14 +76,14 @@ class BaseMetric(ABC):
 
         return Decimal(metric_score) * self.metric_weight
 
-    def to_dict(self) -> dict[str, Any]:
-        """Convert instance to dict."""
+    def serialize(self) -> SerializedMetric:
+        """Serialize computed model fields."""
 
-        return {
-            "normalized_name": self.get_normalized_name(),
-            "prettified_name": self.get_prettified_name(),
-            "metric_weight": float(self.metric_weight),
-            "metric_value": self.compute_metric_value(),
-            "metric_score": self.compute_metric_score().value,
-            "metric_weighted_score": float(self.compute_metric_weighted_score()),
-        }
+        return SerializedMetric(
+            normalized_name=self.get_normalized_name(),
+            prettified_name=self.get_prettified_name(),
+            metric_weight=float(self.metric_weight),
+            metric_value=self.compute_metric_value(),
+            metric_score=self.compute_metric_score(),
+            metric_weighted_score=float(self.compute_metric_weighted_score()),
+        )
