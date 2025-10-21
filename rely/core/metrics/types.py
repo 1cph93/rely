@@ -31,6 +31,7 @@ class MetricName(enum.Enum):
     OPEN_ISSUE_COUNT_METRIC = ("open_issue_count_metric", "Number of open issues")
     IS_ARCHIVED_METRIC = ("is_archived_metric", "Archived?")
     IS_DISABLED_METRIC = ("is_disabled_metric", "Disabled?")
+    HAS_LICENSE_METRIC = ("has_license_metric", "Has license?")
 
     def __init__(self, normalized_name: str, prettified_name: str) -> None:
         self.normalized_name = normalized_name
