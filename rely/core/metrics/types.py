@@ -33,6 +33,7 @@ class MetricName(enum.Enum):
     IS_DISABLED_METRIC = ("is_disabled_metric", "Disabled?")
     HAS_LICENSE_METRIC = ("has_license_metric", "Has license?")
     HAS_DESCRIPTION_METRIC = ("has_description_metric", "Has description?")
+    HAS_README_METRIC = ("has_readme_metric", "Has README?")
 
     def __init__(self, normalized_name: str, prettified_name: str) -> None:
         self.normalized_name = normalized_name
