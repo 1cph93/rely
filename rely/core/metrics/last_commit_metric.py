@@ -29,13 +29,13 @@ class LastCommitMetric(BaseMetric):
     def compute_metric_score(self) -> MetricScore:
         """Compute score based on time since last commit (shorter time equals better score)."""
 
-        computed_metric_value = self.compute_metric_value()
+        days_since_last_commit = self.compute_metric_value()
 
         # Less than 30 days
-        if computed_metric_value < 30:
+        if days_since_last_commit < 30:
             metric_score = MetricScore.GOOD
         # Between 30 days and 180 days
-        elif 30 <= computed_metric_value <= 180:
+        elif 30 <= days_since_last_commit <= 180:
             metric_score = MetricScore.AVERAGE
         # Greater than 180 days
         else:
