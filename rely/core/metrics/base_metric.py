@@ -1,7 +1,7 @@
 import functools
 from abc import ABC, abstractmethod
 from decimal import Decimal
-from typing import Type, MutableMapping
+from typing import Type, MutableMapping, ClassVar
 
 from rely.core.metrics.types import (
     MetricName,
@@ -19,9 +19,9 @@ type MetricRegistry = MutableMapping[str, Type["BaseMetric"]]
 class BaseMetric(ABC):
     """Abstract base class for computable metric subclasses."""
 
-    _registry: MetricRegistry = {}
-    _metric_name: MetricName
-    _metric_weight: MetricWeight
+    _registry: ClassVar[MetricRegistry] = {}
+    _metric_name: ClassVar[MetricName]
+    _metric_weight: ClassVar[MetricWeight]
 
     def __init__(self, repo_context: RepoContext) -> None:
         self.repo_context = repo_context
