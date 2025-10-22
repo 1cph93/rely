@@ -40,7 +40,10 @@ _GitHubRepoUrl = Annotated[HttpUrl, AfterValidator(_is_github_repo_url)]
 
 
 class RepoIdentifier(BaseModel):
-    """Model for storing fields that uniquely identify a repository."""
+    """
+    Model for storing fields that uniquely identify a repository.
+    NOTE: We currently identify a GitHub repository by its full URL.
+    """
 
     url: _GitHubRepoUrl
 
