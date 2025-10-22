@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class ForkCountMetric(BaseMetric):
     """How many forks does the repo have?"""
 
-    metric_name = MetricName.FORK_COUNT_METRIC
-    metric_weight = Decimal("0.5")
+    _metric_name = MetricName.FORK_COUNT_METRIC
+    _metric_weight = Decimal("0.5")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

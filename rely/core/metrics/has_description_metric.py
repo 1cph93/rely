@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class HasDescriptionMetric(BaseMetric):
     """Does the repo have a description?"""
 
-    metric_name = MetricName.HAS_DESCRIPTION_METRIC
-    metric_weight = Decimal("0.25")
+    _metric_name = MetricName.HAS_DESCRIPTION_METRIC
+    _metric_weight = Decimal("0.25")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

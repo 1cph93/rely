@@ -9,8 +9,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class LastCommitMetric(BaseMetric):
     """How recent is the latest commit?"""
 
-    metric_name = MetricName.LAST_COMMIT_METRIC
-    metric_weight = Decimal("0.99")
+    _metric_name = MetricName.LAST_COMMIT_METRIC
+    _metric_weight = Decimal("0.99")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

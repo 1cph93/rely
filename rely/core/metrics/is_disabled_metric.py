@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class IsDisabledMetric(BaseMetric):
     """Is the repo disabled?"""
 
-    metric_name = MetricName.IS_DISABLED_METRIC
-    metric_weight = Decimal("0.99")
+    _metric_name = MetricName.IS_DISABLED_METRIC
+    _metric_weight = Decimal("0.99")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

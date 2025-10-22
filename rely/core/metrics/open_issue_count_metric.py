@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class OpenIssueCountMetric(BaseMetric):
     """How many open issues does the repo have?"""
 
-    metric_name = MetricName.OPEN_ISSUE_COUNT_METRIC
-    metric_weight = Decimal("0.85")
+    _metric_name = MetricName.OPEN_ISSUE_COUNT_METRIC
+    _metric_weight = Decimal("0.85")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class StarCountMetric(BaseMetric):
     """How many stars does the repo have?"""
 
-    metric_name = MetricName.STAR_COUNT_METRIC
-    metric_weight = Decimal("0.65")
+    _metric_name = MetricName.STAR_COUNT_METRIC
+    _metric_weight = Decimal("0.65")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

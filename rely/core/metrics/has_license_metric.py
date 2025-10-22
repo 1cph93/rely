@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class HasLicenseMetric(BaseMetric):
     """Does the repo have a license?"""
 
-    metric_name = MetricName.HAS_LICENSE_METRIC
-    metric_weight = Decimal("0.5")
+    _metric_name = MetricName.HAS_LICENSE_METRIC
+    _metric_weight = Decimal("0.5")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

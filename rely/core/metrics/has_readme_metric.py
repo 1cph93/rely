@@ -8,8 +8,8 @@ from rely.core.metrics.types import MetricName, MetricValue, MetricScore
 class HasReadmeMetric(BaseMetric):
     """Does the repo have a non-empty README in the root directory?"""
 
-    metric_name = MetricName.HAS_README_METRIC
-    metric_weight = Decimal("0.99")
+    _metric_name = MetricName.HAS_README_METRIC
+    _metric_weight = Decimal("0.99")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

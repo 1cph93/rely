@@ -20,8 +20,8 @@ class BaseMetric(ABC):
     """Abstract base class for computable metric subclasses."""
 
     _registry: MetricRegistry = {}
-    metric_name: MetricName
-    metric_weight: MetricWeight
+    _metric_name: MetricName
+    _metric_weight: MetricWeight
 
     def __init__(self, repo_context: RepoContext) -> None:
         self.repo_context = repo_context
@@ -46,7 +46,7 @@ class BaseMetric(ABC):
     def get_normalized_name(cls) -> str:
         """Get normalized metric name."""
 
-        normalized_name, _ = cls.metric_name.value
+        normalized_name, _ = cls._metric_name.value
 
         return normalized_name
 
@@ -54,9 +54,15 @@ class BaseMetric(ABC):
     def get_prettified_name(cls) -> str:
         """Get prettified (human-readable) metric name."""
 
-        _, prettified_name = cls.metric_name.value
+        _, prettified_name = cls._metric_name.value
 
         return prettified_name
+
+    @classmethod
+    def get_metric_weight(cls) -> MetricWeight:
+        """Get metric weight."""
+
+        return cls._metric_weight
 
     @functools.cache
     @abstractmethod
@@ -89,7 +95,7 @@ class BaseMetric(ABC):
 
         metric_score = self.compute_metric_score().value
 
-        return Decimal(metric_score) * self.metric_weight
+        return Decimal(metric_score) * self.get_metric_weight()
 
     def serialize(self) -> SerializedMetric:
         """Serialize computed metric fields."""
@@ -97,7 +103,7 @@ class BaseMetric(ABC):
         return SerializedMetric(
             normalized_name=self.get_normalized_name(),
             prettified_name=self.get_prettified_name(),
-            metric_weight=float(self.metric_weight),
+            metric_weight=float(self.get_metric_weight()),
             metric_value=self.compute_metric_value(),
             metric_score=self.compute_metric_score(),
             metric_weighted_score=float(self.compute_metric_weighted_score()),
