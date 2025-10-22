@@ -1,7 +1,7 @@
 import functools
 from abc import ABC, abstractmethod
 from decimal import Decimal
-from typing import Type
+from typing import Type, MutableMapping
 
 from rely.core.metrics.types import (
     MetricName,
@@ -13,7 +13,7 @@ from rely.core.metrics.types import (
 from rely.core.models.repo_context import RepoContext
 
 
-type MetricRegistry = dict[str, Type["BaseMetric"]]
+type MetricRegistry = MutableMapping[str, Type["BaseMetric"]]
 
 
 class BaseMetric(ABC):
