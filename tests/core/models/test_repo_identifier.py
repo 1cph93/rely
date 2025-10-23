@@ -53,7 +53,7 @@ def test_create_repo_identifier_with_empty_path() -> None:
     assert "path can not be empty" in str(exception_info.value)
 
 
-def test_get_repo_identifier_repo_owner() -> None:
+def test_repo_identifier_get_repo_owner() -> None:
     """Ensure that a RepoIdentifier contains a repo_owner"""
 
     repo_identifier = RepoIdentifier(
@@ -63,7 +63,7 @@ def test_get_repo_identifier_repo_owner() -> None:
     assert repo_identifier.repo_owner == "test_repo_owner"
 
 
-def test_get_repo_identifier_repo_name() -> None:
+def test_repo_identifier_get_repo_name() -> None:
     """Ensure that a RepoIdentifier contains a repo_name"""
 
     repo_identifier = RepoIdentifier(
