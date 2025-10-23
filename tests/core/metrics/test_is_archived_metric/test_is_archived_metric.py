@@ -3,8 +3,8 @@ from rely.core.metrics.types import SerializedMetric
 from rely.core.metrics.is_archived_metric import IsArchivedMetric
 
 
-def test_is_archived_metric_serializer(repo_context: RepoContext):
-    """Ensure that computed metric is properly serialized."""
+def test_compute_is_archived_metric(repo_context: RepoContext):
+    """Ensure that IsArchivedMetric is properly computed and serialized."""
 
     is_archived_metric = IsArchivedMetric(repo_context)
 
