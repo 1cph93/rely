@@ -28,22 +28,20 @@ def repo_identifier() -> RepoIdentifier:
 def full_repository(local_test_dir: Path) -> FullRepository:
     """Fixture to create a FullRepository.  Loads content from a local JSON file."""
 
-    file_path = local_test_dir / "full_repository.json"
+    file_path = local_test_dir / "fixtures" / "full_repository.json"
+    file_content = file_path.read_text()
 
-    with open(file_path.resolve(), "r") as in_file:
-        file_content = in_file.read()
-        return FullRepository.model_validate_json(file_content)
+    return FullRepository.model_validate_json(file_content)
 
 
 @pytest.fixture
 def content_tree_list(local_test_dir: Path) -> ContentTreeList:
     """Fixture to create a ContentTreeList.  Loads content from a local JSON file."""
 
-    file_path = local_test_dir / "content_tree_list.json"
+    file_path = local_test_dir / "fixtures" / "content_tree_list.json"
+    file_content = file_path.read_text()
 
-    with open(file_path.resolve(), "r") as in_file:
-        file_content = in_file.read()
-        return ContentTreeList.model_validate_json(file_content)
+    return ContentTreeList.model_validate_json(file_content)
 
 
 @pytest.fixture
