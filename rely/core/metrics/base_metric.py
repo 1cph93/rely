@@ -19,6 +19,9 @@ type MetricRegistry = MutableMapping[str, Type["BaseMetric"]]
 class BaseMetric(ABC):
     """Abstract base class for computable metric subclasses."""
 
+    # NOTE: These class attributes are not required to be set in subclasses
+    # Discussion around abstract class variables is here:
+    #   https://discuss.python.org/t/provide-a-canonical-way-to-declare-an-abstract-class-variable/69416/18
     _registry: ClassVar[MetricRegistry] = {}
     _metric_name: ClassVar[MetricName]
     _metric_weight: ClassVar[MetricWeight]
