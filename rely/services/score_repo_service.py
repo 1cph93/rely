@@ -1,66 +1,57 @@
-from decimal import Decimal
-
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 from rely.config.settings import Settings
 from rely.clients.http_client import HTTPClient
 from rely.clients.github_api_client import GitHubAPIClient
-from rely.metrics import (
-    MetricScore,
-    LastCommitMetric,
-    HasDescriptionMetric,
-    HasReadmeMetric,
-    IsArchivedMetric,
-    IsDisabledMetric,
-    HasLicenseMetric,
-    HasCodeOfConductMetric,
-    StarCountMetric,
-    ForkCountMetric,
-    WatcherCountMetric,
-    OpenIssueCountMetric,
-    compute_metrics,
-    compute_overall_score,
-)
+from rely.core.models.repo_identifier import RepoIdentifier
+from rely.core.models.repo_context import create_repo_context
+from rely.core.metrics.types import SerializedMetric
+from rely.core.metrics.base_metric import BaseMetric
+from rely.core.metrics.metric_reducer import MetricReducer
+
+# TODO: Make metric imports more explicit
+# NOTE: We import these here in order to populate the registry
+from rely.core.metrics.last_commit_metric import LastCommitMetric
+from rely.core.metrics.star_count_metric import StarCountMetric
+from rely.core.metrics.fork_count_metric import ForkCountMetric
+from rely.core.metrics.watcher_count_metric import WatcherCountMetric
+from rely.core.metrics.open_issue_count_metric import OpenIssueCountMetric
+from rely.core.metrics.is_archived_metric import IsArchivedMetric
+from rely.core.metrics.is_disabled_metric import IsDisabledMetric
+from rely.core.metrics.has_license_metric import HasLicenseMetric
+from rely.core.metrics.has_description_metric import HasDescriptionMetric
+from rely.core.metrics.has_readme_metric import HasReadmeMetric
 
 
-class RepoScore(BaseModel):
-    computed_metrics: list[tuple[str, MetricScore]]
-    overall_score: Decimal
+class RepoResult(BaseModel):
+    """Model to store the overall result output for a repo."""
+
+    overall_score: float
+    metrics: list[SerializedMetric]
 
 
-async def score_repo(owner_name: str, repo_name: str) -> RepoScore:
+async def score_repo(repo_url: str) -> RepoResult:
+    """Patch components together and compute metrics for a repo, based on a URL."""
+
     settings = Settings()
+
     http_client = HTTPClient()
     github_api_client = GitHubAPIClient(
-        http_client, settings.github_personal_access_token
-    )
-    full_repository = await github_api_client.get_repo(owner_name, repo_name)
-    content_tree = await github_api_client.get_repo_contents(
-        full_repository.contents_url
+        http_client=http_client,
+        personal_access_token=settings.github_personal_access_token,
     )
 
-    metrics_to_compute = frozenset(
-        {
-            LastCommitMetric(),
-            HasDescriptionMetric(),
-            HasReadmeMetric(),
-            IsArchivedMetric(),
-            IsDisabledMetric(),
-            HasLicenseMetric(),
-            HasCodeOfConductMetric(),
-            StarCountMetric(),
-            ForkCountMetric(),
-            WatcherCountMetric(),
-            OpenIssueCountMetric(),
-        }
-    )
+    repo_identifier = RepoIdentifier(url=HttpUrl(repo_url))
+    repo_context = await create_repo_context(repo_identifier, github_api_client)
 
-    # TODO: Resolve type: ignore
-    computed_metrics = compute_metrics(
-        metrics_to_compute, full_repository, content_tree
-    )  # type: ignore
-    overall_score = compute_overall_score(computed_metrics)
+    registry = BaseMetric.get_registry()
+    metric_class_list = registry.values()
+    metric_reducer = MetricReducer(metric_class_list, repo_context)
 
-    return RepoScore.model_validate(
-        {"computed_metrics": computed_metrics, "overall_score": overall_score}
+    return RepoResult(
+        overall_score=float(metric_reducer.compute_overall_score()),
+        metrics=[
+            metric_instance.serialize()
+            for metric_instance in metric_reducer.metric_instances
+        ],
     )

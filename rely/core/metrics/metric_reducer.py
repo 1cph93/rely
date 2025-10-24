@@ -17,7 +17,7 @@ class MetricReducer:
         self._repo_context = repo_context
 
     @property
-    def _metric_instances(self) -> list[BaseMetric]:
+    def metric_instances(self) -> list[BaseMetric]:
         """Create a list of metric instances."""
 
         return [
@@ -39,7 +39,7 @@ class MetricReducer:
         weighted_sum = sum(
             [
                 metric_instance.compute_metric_weighted_score()
-                for metric_instance in self._metric_instances
+                for metric_instance in self.metric_instances
             ]
         )
 

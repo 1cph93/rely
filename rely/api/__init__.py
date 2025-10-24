@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
-from rely.services.score_repo_service import RepoScore, score_repo
+from rely.services.score_repo_service import RepoResult, score_repo
 
 
 app = FastAPI()
 
 
-@app.get("/score")
-async def score(owner_name: str, repo_name: str) -> RepoScore:
-    return await score_repo(owner_name, repo_name)
+@app.get("/score_repo")
+async def score(repo_url: str) -> RepoResult:
+    return await score_repo(repo_url)
