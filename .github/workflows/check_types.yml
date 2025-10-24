@@ -24,4 +24,4 @@ jobs:
         run: uv sync --locked --all-extras --dev
 
       - name: Run Pyright type checker
-        run: uv run pyright
+        run: uv run mypy
