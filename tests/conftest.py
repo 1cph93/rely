@@ -1,65 +1,39 @@
 from pathlib import Path
+from typing import Callable, Type
 
 import pytest
 from _pytest.fixtures import SubRequest  # NOTE: Deprecated
-from pydantic import HttpUrl
+from pydantic import BaseModel, HttpUrl
 
 from rely.core.models.repo_identifier import RepoIdentifier
-from rely.core.models.repo_context import RepoContext
-from rely.clients.models.full_repository import FullRepository
-from rely.clients.models.content_tree_list import ContentTreeList
+
+
+type ModelLoaderFunction = Callable[[Type[BaseModel], Path], BaseModel]
+
+
+@pytest.fixture
+def load_model_from_file() -> ModelLoaderFunction:
+    """Factory fixture to load Pydantic model from JSON file."""
+
+    def _load_model_from_file(
+        model_class: Type[BaseModel], file_path: Path
+    ) -> BaseModel:
+        file_content = file_path.read_text()
+
+        return model_class.model_validate_json(file_content)
+
+    return _load_model_from_file
 
 
 @pytest.fixture
 def local_test_dir(request: SubRequest) -> Path:
-    """Get the path of the current testing directory."""
+    """Get path of current testing directory."""
 
-    return Path(request.node.fspath).parent
+    return Path(request.node.path).parent
 
 
 @pytest.fixture
 def repo_identifier() -> RepoIdentifier:
-    """Fixture to create a RepoIdentifier."""
+    """Fixture to create RepoIdentifier instance."""
 
     return RepoIdentifier(url=HttpUrl("https://github.com/1cph93/rely"))
-
-
-@pytest.fixture
-def full_repository(local_test_dir: Path) -> FullRepository:
-    """
-    Fixture to create a FullRepository.
-    NOTE: Loads model from JSON file located at LOCAL_TEST_DIR/fixtures/full_repository.json
-    """
-
-    file_path = local_test_dir / "fixtures" / "full_repository.json"
-    file_content = file_path.read_text()
-
-    return FullRepository.model_validate_json(file_content)
-
-
-@pytest.fixture
-def content_tree_list(local_test_dir: Path) -> ContentTreeList:
-    """
-    Fixture to create a ContentTreeList.
-    NOTE: Loads model from JSON file located at LOCAL_TEST_DIR/fixtures/content_tree_list.json
-    """
-
-    file_path = local_test_dir / "fixtures" / "content_tree_list.json"
-    file_content = file_path.read_text()
-
-    return ContentTreeList.model_validate_json(file_content)
-
-
-@pytest.fixture
-def repo_context(
-    repo_identifier: RepoIdentifier,
-    full_repository: FullRepository,
-    content_tree_list: ContentTreeList,
-):
-    """Fixture to create a RepoContext."""
-
-    return RepoContext(
-        repo_identifier=repo_identifier,
-        full_repository=full_repository,
-        content_tree_list=content_tree_list,
-    )

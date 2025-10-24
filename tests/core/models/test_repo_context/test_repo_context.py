@@ -1,4 +1,5 @@
 from unittest import mock
+from pathlib import Path
 
 import pytest
 from pytest_mock import MockerFixture
@@ -9,6 +10,7 @@ from rely.core.models.repo_identifier import RepoIdentifier
 from rely.core.models.repo_context import RepoContext, create_repo_context
 from rely.clients.models.full_repository import FullRepository
 from rely.clients.models.content_tree_list import ContentTreeList
+from tests.conftest import ModelLoaderFunction
 
 
 @pytest.fixture
@@ -23,12 +25,18 @@ def mock_http_client(mocker: MockerFixture) -> HTTPClient:
 @pytest.fixture
 def mock_github_api_client(
     mocker: MockerFixture,
+    local_test_dir: Path,
+    load_model_from_file: ModelLoaderFunction,
     mock_http_client: HTTPClient,
-    full_repository: FullRepository,
-    content_tree_list: ContentTreeList,
 ) -> GitHubAPIClient:
     """Fixture to create a mock GitHubAPIClient."""
 
+    full_repository = load_model_from_file(
+        FullRepository, local_test_dir / "fixtures" / "full_repository.json"
+    )
+    content_tree_list = load_model_from_file(
+        ContentTreeList, local_test_dir / "fixtures" / "content_tree_list.json"
+    )
     mocker.patch.object(
         GitHubAPIClient, "get_repo", mock.AsyncMock(return_value=full_repository)
     )
@@ -42,11 +50,18 @@ def mock_github_api_client(
 
 
 def test_instantiate_repo_context(
+    local_test_dir: Path,
     repo_identifier: RepoIdentifier,
-    content_tree_list: ContentTreeList,
-    full_repository: FullRepository,
+    load_model_from_file: ModelLoaderFunction,
 ) -> None:
     """Ensure that we can instantiate a RepoContext."""
+
+    full_repository = load_model_from_file(
+        FullRepository, local_test_dir / "fixtures" / "full_repository.json"
+    )
+    content_tree_list = load_model_from_file(
+        ContentTreeList, local_test_dir / "fixtures" / "content_tree_list.json"
+    )
 
     repo_context = RepoContext(
         repo_identifier=repo_identifier,
