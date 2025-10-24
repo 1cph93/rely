@@ -22,11 +22,14 @@ Rely is a tool for vetting GitHub dependencies.
    uv sync
    ```
 5. Copy the `.env.example` file to `.env` and set your GitHub personal access token
-6. Run the Streamlit app from the root directory:
+6. Install as an editable package:
    ```sh
-   ./scripts/run_streamlit_app.sh
+   uv pip install -e .
    ```
-7. Visit [https://localhost:8000](https://localhost:8000) in the browser
+7. Use the CLI with a repository URL:
+   ```sh
+   uv run rely https://github.com/1cph93/rely
+   ```
 
 
 ## Roadmap
