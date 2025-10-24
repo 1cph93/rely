@@ -9,18 +9,18 @@ from rely.core.metrics.types import SerializedMetric
 from rely.core.metrics.base_metric import BaseMetric
 from rely.core.metrics.metric_reducer import MetricReducer
 
-# TODO: Make metric imports more explicit
 # NOTE: We import these here in order to populate the registry
-from rely.core.metrics.last_commit_metric import LastCommitMetric
-from rely.core.metrics.star_count_metric import StarCountMetric
-from rely.core.metrics.fork_count_metric import ForkCountMetric
-from rely.core.metrics.watcher_count_metric import WatcherCountMetric
-from rely.core.metrics.open_issue_count_metric import OpenIssueCountMetric
-from rely.core.metrics.is_archived_metric import IsArchivedMetric
-from rely.core.metrics.is_disabled_metric import IsDisabledMetric
-from rely.core.metrics.has_license_metric import HasLicenseMetric
-from rely.core.metrics.has_description_metric import HasDescriptionMetric
-from rely.core.metrics.has_readme_metric import HasReadmeMetric
+# TODO: Explore other solutions besides registry that are more explicit
+from rely.core.metrics.last_commit_metric import LastCommitMetric  # noqa
+from rely.core.metrics.star_count_metric import StarCountMetric  # noqa
+from rely.core.metrics.fork_count_metric import ForkCountMetric  # noqa
+from rely.core.metrics.watcher_count_metric import WatcherCountMetric  # noqa
+from rely.core.metrics.open_issue_count_metric import OpenIssueCountMetric  # noqa
+from rely.core.metrics.is_archived_metric import IsArchivedMetric  # noqa
+from rely.core.metrics.is_disabled_metric import IsDisabledMetric  # noqa
+from rely.core.metrics.has_license_metric import HasLicenseMetric  # noqa
+from rely.core.metrics.has_description_metric import HasDescriptionMetric  # noqa
+from rely.core.metrics.has_readme_metric import HasReadmeMetric  # noqa
 
 
 class RepoResult(BaseModel):
