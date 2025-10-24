@@ -47,7 +47,7 @@ class RepoIdentifier(BaseModel):
 
     url: _GitHubRepoUrl
 
-    @computed_field(return_type=str)
+    @computed_field(return_type=str)  # type: ignore[prop-decorator]
     @property
     def repo_owner(self) -> str:
         """Owner of the repository."""
@@ -56,7 +56,7 @@ class RepoIdentifier(BaseModel):
 
         return repo_owner
 
-    @computed_field(return_type=str)
+    @computed_field(return_type=str)  # type: ignore[prop-decorator]
     @property
     def repo_name(self) -> str:
         """Name of the repository."""
