@@ -26,7 +26,8 @@ from rely.core.metrics.has_readme_metric import HasReadmeMetric  # noqa
 class RepoResult(BaseModel):
     """Model to store the overall result output for a repo."""
 
-    overall_score: float
+    overall_score_decimal: float
+    overall_score_int: int
     metrics: list[SerializedMetric]
 
 
@@ -48,8 +49,11 @@ async def score_repo(repo_url: str) -> RepoResult:
     metric_class_list = registry.values()
     metric_reducer = MetricReducer(metric_class_list, repo_context)
 
+    overall_score = metric_reducer.compute_overall_score()
+
     return RepoResult(
-        overall_score=float(metric_reducer.compute_overall_score()),
+        overall_score_decimal=float(overall_score),
+        overall_score_int=int(overall_score * 100),
         metrics=[
             metric_instance.serialize()
             for metric_instance in metric_reducer.metric_instances
