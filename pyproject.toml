@@ -36,3 +36,5 @@ testpaths = [
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
+files = "rely/**/*.py, tests/**/*.py"
+strict = true
