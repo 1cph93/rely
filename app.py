@@ -34,23 +34,14 @@ def compute_letter_grade(numerical_grade: int) -> LetterGrade:
 
 def render() -> None:
     main_form = st.form("main_form")
-
-    repo_owner = main_form.text_input("Repo Owner:", "1cph93")
-    repo_name = main_form.text_input("Repo Name:", "bcolz")
-
+    repo_url = main_form.text_input("Repo URL:", "https://github.com/1cph93/rely")
     submit = main_form.form_submit_button("Analyze")
 
-    # serialized_computed_metrics = [
-    #     (computed_metric[0], computed_metric[-1].value)
-    #     for computed_metric in repo_score.computed_metrics
-    # ]
-
     if submit:
-        repo_score = asyncio.run(score_repo(repo_owner, repo_name))
+        repo_score = asyncio.run(score_repo(repo_url))
         numerical_grade = int(repo_score.overall_score * 100)
         letter_grade = compute_letter_grade(numerical_grade)
         main_form.subheader(f"Grade: {letter_grade.value} ({numerical_grade}%)")
-        # st.table(data=serialized_computed_metrics)
     else:
         main_form.subheader("&nbsp;")
 
