@@ -12,23 +12,21 @@ Rely is a tool for vetting GitHub dependencies.
 ## Installation
 
 1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
-2. Clone the repo
+
+2. Set the `GITHUB_PERSONAL_ACCESS_TOKEN` environment variable (token from step 1):
    ```sh
-   git clone https://github.com/1cph93/rely.git
+   export GITHUB_PERSONAL_ACCESS_TOKEN=...
    ```
-3. Ensure `uv` is installed ([guide](https://docs.astral.sh/uv/getting-started/installation/))
-4. Install dependencies:
+
+3. Install and run `rely` with [`uv`](https://docs.astral.sh/uv/getting-started/installation/):
    ```sh
-   uv sync
-   ```
-5. Copy the `.env.example` file to `.env` and set your GitHub personal access token
-6. Install as an editable package:
-   ```sh
-   uv pip install -e .
-   ```
-7. Use the CLI with a repository URL:
-   ```sh
+   uv add rely
    uv run rely https://github.com/1cph93/rely
+   ```
+
+   Or just run it as a tool:
+   ```sh
+   uv tool run rely https://github.com/1cph93/rely
    ```
 
 
