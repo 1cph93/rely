@@ -28,7 +28,13 @@ class MetricReducer:
     def _highest_possible_score(self) -> Decimal:
         """Compute the highest possible score that a repo can have."""
 
-        highest_possible_score = MetricScore.GOOD.value * len(self._metric_classes)
+        metric_weights = [
+            metric_instance.get_metric_weight()
+            for metric_instance in self.metric_instances
+        ]
+        highest_possible_score = sum(
+            [MetricScore.GOOD.value * metric_weight for metric_weight in metric_weights]
+        )
 
         return Decimal(highest_possible_score)
 
