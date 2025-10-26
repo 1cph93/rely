@@ -9,6 +9,9 @@ Rely is a tool for vetting GitHub dependencies.
 >
 > Rely is in active development and certain features may be incomplete.
 
+
+We need to know if we can **rely** on packages before we add them as dependencies in our own projects.  Rely scores GitHub repositories based on a number of metrics, including time since last commit, star count, open issues, documentation, and more.  Rely is partially inspired by a discussion of the metrics that are used to evaluate open source projects on [Hacker News](https://news.ycombinator.com/item?id=17257062).
+
 ## Installation
 
 1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
