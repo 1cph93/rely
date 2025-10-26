@@ -9,7 +9,7 @@ class IsArchivedMetric(BaseMetric):
     """Is the repo archived?"""
 
     _metric_name = MetricName.IS_ARCHIVED_METRIC
-    _metric_weight = Decimal("0.99")
+    _metric_weight = Decimal("1.00")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:

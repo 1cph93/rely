@@ -9,7 +9,7 @@ class IsDisabledMetric(BaseMetric):
     """Is the repo disabled?"""
 
     _metric_name = MetricName.IS_DISABLED_METRIC
-    _metric_weight = Decimal("0.99")
+    _metric_weight = Decimal("1.00")
 
     @functools.cache
     def compute_metric_value(self) -> MetricValue:
