@@ -12,6 +12,26 @@ Rely is a tool for vetting GitHub dependencies.
 
 We need to know if we can **rely** on packages before we add them as dependencies in our own projects.  Rely scores GitHub repositories based on a number of metrics, including time since last commit, star count, open issues, documentation, and more.  Rely is partially inspired by a discussion of the metrics that are used to evaluate open source projects on [Hacker News](https://news.ycombinator.com/item?id=17257062).
 
+```console
+$ uv run rely https://github.com/fastapi/fastapi
+           Rely score for https://github.com/fastapi/fastapi
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━┓
+┃                Metric ┃ Value ┃ Raw score ┃ Weight ┃ Weighted score ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━┩
+│ Last commit (in days) │ 3     │ 3/3       │ 1.0    │            3.0 │
+│       Number of stars │ 91186 │ 3/3       │ 0.65   │           1.95 │
+│       Number of forks │ 8122  │ 3/3       │ 0.5    │            1.5 │
+│    Number of watchers │ 91186 │ 3/3       │ 0.5    │            1.5 │
+│ Number of open issues │ 199   │ 3/3       │ 0.85   │           2.55 │
+│             Archived? │ False │ 3/3       │ 1.0    │            3.0 │
+│             Disabled? │ False │ 3/3       │ 1.0    │            3.0 │
+│          Has license? │ True  │ 3/3       │ 0.5    │            1.5 │
+│      Has description? │ True  │ 3/3       │ 0.25   │           0.75 │
+│           Has README? │ True  │ 3/3       │ 1.0    │            3.0 │
+└───────────────────────┴───────┴───────────┴────────┴────────────────┘
+Overall score is 100%
+```
+
 ## Installation
 
 1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
