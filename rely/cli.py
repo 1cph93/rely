@@ -32,7 +32,7 @@ async def render(repo_url: str) -> None:
         table.add_row(
             metric.prettified_name,
             str(metric.metric_value),
-            str(metric.metric_score),
+            f"{metric.metric_score}/{repo_result.maximum_metric_score}",
             str(metric.metric_weight),
             str(metric.metric_weighted_score),
         )

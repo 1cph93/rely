@@ -5,7 +5,7 @@ from rely.clients.http_client import HTTPClient
 from rely.clients.github_api_client import GitHubAPIClient
 from rely.core.models.repo_identifier import RepoIdentifier
 from rely.core.models.repo_context import create_repo_context
-from rely.core.metrics.types import SerializedMetric
+from rely.core.metrics.types import SerializedMetric, MetricScore
 from rely.core.metrics.base_metric import BaseMetric
 from rely.core.metrics.metric_reducer import MetricReducer
 
@@ -28,6 +28,7 @@ class RepoResult(BaseModel):
 
     overall_score_decimal: float
     overall_score_int: int
+    maximum_metric_score: int
     metrics: list[SerializedMetric]
 
 
@@ -54,6 +55,7 @@ async def score_repo(repo_url: str) -> RepoResult:
     return RepoResult(
         overall_score_decimal=float(overall_score),
         overall_score_int=int(overall_score * 100),
+        maximum_metric_score=MetricScore.GOOD.value,
         metrics=[
             metric_instance.serialize()
             for metric_instance in metric_reducer.metric_instances
