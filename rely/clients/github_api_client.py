@@ -1,10 +1,18 @@
-from typing import Final
+from typing import Final, Any
 from types import MappingProxyType
+
+import aiohttp
 
 from rely.clients.http_client import HTTPClient
 from rely.clients.models.full_repository import FullRepository
 from rely.clients.models.content_tree_list import ContentTreeList
 from rely.core.models.repo_identifier import RepoIdentifier
+
+
+class GitHubAPIError(Exception):
+    """Generic exception for GitHub API errors."""
+
+    pass
 
 
 class GitHubAPIClient:
@@ -29,10 +37,7 @@ class GitHubAPIClient:
         """
 
         url = f"{self.API_BASE_URL}/repos/{repo_identifier.repo_owner}/{repo_identifier.repo_name}"
-        response = await self._http_client.get(
-            url=url,
-            headers=self.headers,
-        )
+        response = await self._perform_get_request(url)
 
         # TODO: Add error handling
         return FullRepository.model_validate(response)
@@ -46,10 +51,23 @@ class GitHubAPIClient:
 
         # Remove "/{+path}" from the end of the contents URL
         url = contents_url.rstrip("/{+path}")
-        response = await self._http_client.get(
-            url=url,
-            headers=self.headers,
-        )
+        response = await self._perform_get_request(url)
 
         # TODO: Add error handling
         return ContentTreeList(content_tree_list=response)
+
+    async def _perform_get_request(self, url: str) -> Any:
+        """
+        Perform HTTP request and handle errors.
+        Reference: https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api?apiVersion=2022-11-28
+        """
+
+        try:
+            return await self._http_client.get(
+                url=url,
+                headers=self.headers,
+            )
+        except aiohttp.ClientResponseError as error:
+            raise GitHubAPIError(
+                f"Received {error.status} response with message: {error.message}"
+            )
