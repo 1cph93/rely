@@ -32,6 +32,7 @@ $ uv run rely https://github.com/fastapi/fastapi
 Overall score is 100%
 ```
 
+
 ## Installation
 
 1. Create a GitHub personal access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens))
@@ -78,3 +79,30 @@ Don't forget to give the project a star! Thanks again!
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+## Local Development
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/1cph93/rely.git
+   ```
+
+2. Install all dependencies:
+   ```sh
+   uv sync
+   ```
+
+3. Run the application:
+   ```sh
+   docker compose up --watch
+   ```
+
+4. Run tests:
+   ```sh
+   uv run pytest
+   ```
+   Or
+   ```sh
+   ./scripts/run_tests.sh
+   ```
