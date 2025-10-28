@@ -36,20 +36,18 @@ async def score_repo(repo_url: str) -> RepoResult:
     """Patch components together and compute metrics for a repo, based on a URL."""
 
     settings = Settings()
-
-    http_client = HTTPClient()
-    github_api_client = GitHubAPIClient(
-        http_client=http_client,
-        personal_access_token=settings.github_personal_access_token,
-    )
-
     repo_identifier = RepoIdentifier(url=HttpUrl(repo_url))
-    repo_context = await create_repo_context(repo_identifier, github_api_client)
+
+    async with HTTPClient() as http_client:
+        github_api_client = GitHubAPIClient(
+            http_client=http_client,
+            personal_access_token=settings.github_personal_access_token,
+        )
+        repo_context = await create_repo_context(repo_identifier, github_api_client)
 
     registry = BaseMetric.get_registry()
     metric_class_list = registry.values()
     metric_reducer = MetricReducer(metric_class_list, repo_context)
-
     overall_score = metric_reducer.compute_overall_score()
 
     return RepoResult(

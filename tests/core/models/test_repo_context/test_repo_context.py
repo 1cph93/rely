@@ -4,7 +4,6 @@ from pathlib import Path
 import pytest
 from pytest_mock import MockerFixture
 
-from rely.clients.http_client import HTTPClient
 from rely.clients.github_api_client import GitHubAPIClient
 from rely.core.models.repo_identifier import RepoIdentifier
 from rely.core.models.repo_context import RepoContext, create_repo_context
@@ -14,20 +13,10 @@ from tests.conftest import ModelLoaderFunction
 
 
 @pytest.fixture
-def mock_http_client(mocker: MockerFixture) -> HTTPClient:
-    """Fixture to create a mock HTTPClient."""
-
-    mocker.patch.object(HTTPClient, "get", autospec=True)
-
-    return HTTPClient()
-
-
-@pytest.fixture
 def mock_github_api_client(
     mocker: MockerFixture,
     local_test_dir: Path,
     load_model_from_file: ModelLoaderFunction,
-    mock_http_client: HTTPClient,
 ) -> GitHubAPIClient:
     """Fixture to create a mock GitHubAPIClient."""
 
@@ -46,7 +35,7 @@ def mock_github_api_client(
         mock.AsyncMock(return_value=content_tree_list),
     )
 
-    return GitHubAPIClient(http_client=mock_http_client, personal_access_token="test")
+    return GitHubAPIClient(http_client=mock.AsyncMock(), personal_access_token="test")
 
 
 def test_instantiate_repo_context(
