@@ -22,9 +22,13 @@ class GitHubAPIClient:
 
     def __init__(self, http_client: HTTPClient, personal_access_token: str) -> None:
         self._http_client = http_client
-        self.headers: MappingProxyType[str, str] = MappingProxyType(
+        self._personal_access_token = personal_access_token
+
+    @property
+    def headers(self) -> MappingProxyType:
+        return MappingProxyType(
             {
-                "Authorization": f"Bearer {personal_access_token}",
+                "Authorization": f"Bearer {self._personal_access_token}",
                 "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2022-11-28",
             }

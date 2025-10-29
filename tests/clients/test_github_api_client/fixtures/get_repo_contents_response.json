@@ -1,0 +1,242 @@
+[
+    {
+        "name": ".env.example",
+        "path": ".env.example",
+        "sha": "531afb810faa550ecfd02ba80072d223dd4f5ac4",
+        "size": 43,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/.env.example?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/.env.example",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/531afb810faa550ecfd02ba80072d223dd4f5ac4",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/.env.example",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/.env.example?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/531afb810faa550ecfd02ba80072d223dd4f5ac4",
+            "html": "https://github.com/1cph93/rely/blob/main/.env.example"
+        }
+    },
+    {
+        "name": ".github",
+        "path": ".github",
+        "sha": "75887ba08a3778971d745cbe14eb0d5311b102c1",
+        "size": 0,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/.github?ref=main",
+        "html_url": "https://github.com/1cph93/rely/tree/main/.github",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/trees/75887ba08a3778971d745cbe14eb0d5311b102c1",
+        "download_url": null,
+        "type": "dir",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/.github?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/trees/75887ba08a3778971d745cbe14eb0d5311b102c1",
+            "html": "https://github.com/1cph93/rely/tree/main/.github"
+        }
+    },
+    {
+        "name": ".gitignore",
+        "path": ".gitignore",
+        "sha": "b9ca7a81c15c365c5626eef7604e7f0e1ec536ba",
+        "size": 175,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/.gitignore?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/.gitignore",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/b9ca7a81c15c365c5626eef7604e7f0e1ec536ba",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/.gitignore",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/.gitignore?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/b9ca7a81c15c365c5626eef7604e7f0e1ec536ba",
+            "html": "https://github.com/1cph93/rely/blob/main/.gitignore"
+        }
+    },
+    {
+        "name": ".python-version",
+        "path": ".python-version",
+        "sha": "e4fba2183587225f216eeada4c78dfab6b2e65f5",
+        "size": 5,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/.python-version?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/.python-version",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/e4fba2183587225f216eeada4c78dfab6b2e65f5",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/.python-version",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/.python-version?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/e4fba2183587225f216eeada4c78dfab6b2e65f5",
+            "html": "https://github.com/1cph93/rely/blob/main/.python-version"
+        }
+    },
+    {
+        "name": "Dockerfile",
+        "path": "Dockerfile",
+        "sha": "dba47fc0c20241693e300f195d176698ada53e70",
+        "size": 1549,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/Dockerfile?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/Dockerfile",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/dba47fc0c20241693e300f195d176698ada53e70",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/Dockerfile",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/Dockerfile?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/dba47fc0c20241693e300f195d176698ada53e70",
+            "html": "https://github.com/1cph93/rely/blob/main/Dockerfile"
+        }
+    },
+    {
+        "name": "LICENSE",
+        "path": "LICENSE",
+        "sha": "0fcff9945fdf4d1d8fa0049894a8b6f30b2ffd18",
+        "size": 1082,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/LICENSE?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/LICENSE",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/0fcff9945fdf4d1d8fa0049894a8b6f30b2ffd18",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/LICENSE",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/LICENSE?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/0fcff9945fdf4d1d8fa0049894a8b6f30b2ffd18",
+            "html": "https://github.com/1cph93/rely/blob/main/LICENSE"
+        }
+    },
+    {
+        "name": "README.md",
+        "path": "README.md",
+        "sha": "1425eda02a759e2c522455babc257046d7626c3c",
+        "size": 4091,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/README.md?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/README.md",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/1425eda02a759e2c522455babc257046d7626c3c",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/README.md",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/README.md?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/1425eda02a759e2c522455babc257046d7626c3c",
+            "html": "https://github.com/1cph93/rely/blob/main/README.md"
+        }
+    },
+    {
+        "name": "compose.yml",
+        "path": "compose.yml",
+        "sha": "8289df3d260cf3b677c9d42a2ded67de558ec5b5",
+        "size": 775,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/compose.yml?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/compose.yml",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/8289df3d260cf3b677c9d42a2ded67de558ec5b5",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/compose.yml",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/compose.yml?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/8289df3d260cf3b677c9d42a2ded67de558ec5b5",
+            "html": "https://github.com/1cph93/rely/blob/main/compose.yml"
+        }
+    },
+    {
+        "name": "docs",
+        "path": "docs",
+        "sha": "339aa472ae1d1bc599a8bcccf87752b2769e89a6",
+        "size": 0,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/docs?ref=main",
+        "html_url": "https://github.com/1cph93/rely/tree/main/docs",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/trees/339aa472ae1d1bc599a8bcccf87752b2769e89a6",
+        "download_url": null,
+        "type": "dir",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/docs?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/trees/339aa472ae1d1bc599a8bcccf87752b2769e89a6",
+            "html": "https://github.com/1cph93/rely/tree/main/docs"
+        }
+    },
+    {
+        "name": "mkdocs.yml",
+        "path": "mkdocs.yml",
+        "sha": "2c128fd3bf91c06bc2422f12da58d7646a8c84ca",
+        "size": 193,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/mkdocs.yml?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/mkdocs.yml",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/2c128fd3bf91c06bc2422f12da58d7646a8c84ca",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/mkdocs.yml",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/mkdocs.yml?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/2c128fd3bf91c06bc2422f12da58d7646a8c84ca",
+            "html": "https://github.com/1cph93/rely/blob/main/mkdocs.yml"
+        }
+    },
+    {
+        "name": "pyproject.toml",
+        "path": "pyproject.toml",
+        "sha": "957ac6dc1f5a0be91adfb1cd0f6f5933848daa7c",
+        "size": 962,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/pyproject.toml?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/pyproject.toml",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/957ac6dc1f5a0be91adfb1cd0f6f5933848daa7c",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/pyproject.toml",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/pyproject.toml?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/957ac6dc1f5a0be91adfb1cd0f6f5933848daa7c",
+            "html": "https://github.com/1cph93/rely/blob/main/pyproject.toml"
+        }
+    },
+    {
+        "name": "rely",
+        "path": "rely",
+        "sha": "b17a2aacdbb78e43db6709e893c5219df4a8f3cf",
+        "size": 0,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/rely?ref=main",
+        "html_url": "https://github.com/1cph93/rely/tree/main/rely",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/trees/b17a2aacdbb78e43db6709e893c5219df4a8f3cf",
+        "download_url": null,
+        "type": "dir",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/rely?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/trees/b17a2aacdbb78e43db6709e893c5219df4a8f3cf",
+            "html": "https://github.com/1cph93/rely/tree/main/rely"
+        }
+    },
+    {
+        "name": "scripts",
+        "path": "scripts",
+        "sha": "152e9bedd91d8f5594efc7df5e328b9a0c54d54b",
+        "size": 0,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/scripts?ref=main",
+        "html_url": "https://github.com/1cph93/rely/tree/main/scripts",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/trees/152e9bedd91d8f5594efc7df5e328b9a0c54d54b",
+        "download_url": null,
+        "type": "dir",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/scripts?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/trees/152e9bedd91d8f5594efc7df5e328b9a0c54d54b",
+            "html": "https://github.com/1cph93/rely/tree/main/scripts"
+        }
+    },
+    {
+        "name": "tests",
+        "path": "tests",
+        "sha": "7c0e49f9184ce0641c8d11e920a453ae1478b7d2",
+        "size": 0,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/tests?ref=main",
+        "html_url": "https://github.com/1cph93/rely/tree/main/tests",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/trees/7c0e49f9184ce0641c8d11e920a453ae1478b7d2",
+        "download_url": null,
+        "type": "dir",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/tests?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/trees/7c0e49f9184ce0641c8d11e920a453ae1478b7d2",
+            "html": "https://github.com/1cph93/rely/tree/main/tests"
+        }
+    },
+    {
+        "name": "uv.lock",
+        "path": "uv.lock",
+        "sha": "4cff7a054d6f6b6775cd724e3fc75a4ea137317d",
+        "size": 356045,
+        "url": "https://api.github.com/repos/1cph93/rely/contents/uv.lock?ref=main",
+        "html_url": "https://github.com/1cph93/rely/blob/main/uv.lock",
+        "git_url": "https://api.github.com/repos/1cph93/rely/git/blobs/4cff7a054d6f6b6775cd724e3fc75a4ea137317d",
+        "download_url": "https://raw.githubusercontent.com/1cph93/rely/main/uv.lock",
+        "type": "file",
+        "_links": {
+            "self": "https://api.github.com/repos/1cph93/rely/contents/uv.lock?ref=main",
+            "git": "https://api.github.com/repos/1cph93/rely/git/blobs/4cff7a054d6f6b6775cd724e3fc75a4ea137317d",
+            "html": "https://github.com/1cph93/rely/blob/main/uv.lock"
+        }
+    }
+]
