@@ -88,17 +88,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
    git clone https://github.com/1cph93/rely.git
    ```
 
-2. Install all dependencies:
-   ```sh
-   uv sync
-   ```
-
-3. Run the application:
+2. Run the application:
    ```sh
    docker compose up --watch
    ```
 
-4. Run tests:
+3. Run tests:
    ```sh
    uv run pytest
    ```
