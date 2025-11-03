@@ -25,7 +25,7 @@ class GitHubAPIClient:
         self._personal_access_token = personal_access_token
 
     @property
-    def headers(self) -> MappingProxyType:
+    def headers(self) -> MappingProxyType[str, str]:
         return MappingProxyType(
             {
                 "Authorization": f"Bearer {self._personal_access_token}",
